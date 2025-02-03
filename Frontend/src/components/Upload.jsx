@@ -7,12 +7,10 @@ const DraggableImage = ({ file, index, moveImage }) => {
 
     useEffect(() => {
         if (file) {
-            // Check if imageFile is valid and then create object URL
             if (file instanceof File) {
                 const objectUrl = URL.createObjectURL(file);
                 setImageUrl(objectUrl);
 
-                // Cleanup the object URL when component unmounts
                 return () => {
                     URL.revokeObjectURL(objectUrl);
                 };
@@ -91,7 +89,7 @@ const Upload = ({ setPdfUrl, setSelectedImages, selectedImages }) => {
                     Select Images
                 </label>
 
-                {/* Display images if selected */}
+           
                 <div className="grid grid-cols-6 gap-30 mt-4 w-full max-w-3xl mx-auto gap-y-2">
                     {selectedImages.map((file, index) => (
                         <DraggableImage
@@ -103,7 +101,7 @@ const Upload = ({ setPdfUrl, setSelectedImages, selectedImages }) => {
                     ))}
                 </div>
 
-                {/* Show the Preview button if there are selected images */}
+               
                 
             </div>
         </DndProvider>

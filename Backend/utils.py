@@ -1,5 +1,6 @@
 import os
 from PIL import Image
+
 PDF_FOLDER = "pdfs"
 os.makedirs(PDF_FOLDER, exist_ok=True)
 

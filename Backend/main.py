@@ -21,10 +21,10 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows all origins
+    allow_origins=["*"],  
     allow_credentials=True,
-    allow_methods=["*"],  # Allows all methods (GET, POST, PUT, DELETE, etc.)
-    allow_headers=["*"],  # Allows all headers
+    allow_methods=["*"],  
+    allow_headers=["*"], 
 )
 
 
@@ -49,13 +49,13 @@ async def convert_to_pdf(files: list[UploadFile] = File(...)):
 
     c = canvas.Canvas(pdf_path, pagesize=A4)
     width, height = A4
-    margin = 20  # Space between pages
+    margin = 20  
 
     for image in image_paths:
         img = ImageReader(image)
         img_width, img_height = img.getSize()
 
-        # Scale image while maintaining aspect ratio
+        
         scale = min((width - 2 * margin) / img_width, (height - 2 * margin) / img_height)
         new_width = img_width * scale
         new_height = img_height * scale
@@ -68,11 +68,6 @@ async def convert_to_pdf(files: list[UploadFile] = File(...)):
         c.showPage()  # Create a new page for each image
 
     c.save()
-    # conn = sqlite3.connect("database.db")
-    # cursor = conn.cursor()
-    # cursor.execute("INSERT INTO pdfs (filename, file_path) VALUES (?, ?)", (pdf_filename, pdf_path))
-    # conn.commit()
-    # conn.close()
 
     return {"pdf_url": f"http://127.0.0.1:8000/pdfs/view/{pdf_filename}"}
 
@@ -94,6 +89,6 @@ async def get_pdf(filename: str):
     if not os.path.exists(file_path):
         raise HTTPException(status_code=404, detail="PDF not found")
     headers = {
-        "Content-Disposition": f"attachment; filename={filename}"  # This prompts download
+        "Content-Disposition": f"attachment; filename={filename}" 
     }
     return FileResponse(file_path, headers=headers) 

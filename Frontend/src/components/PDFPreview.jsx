@@ -22,12 +22,11 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100vh', // Full viewport height
-    // Light gray background for contrast
+    height: '100vh',
   },
   viewer: {
-    width: '60%', // Adjust width as needed
-    maxWidth: '800px', // Limit max width for responsiveness
+    width: '60%', 
+    maxWidth: '800px', 
     backgroundColor: '#fff',
     padding: '20px',
     borderRadius: '10px',
