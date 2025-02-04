@@ -9,14 +9,16 @@ Follow the instructions to run locally:
 
 To run frontend:
 ->Terminal 1:
-cd Frontend
-npm install
-npm run dev
+
+    cd Frontend
+    npm install
+    npm run dev
 
 To run backtend:
 ->Terminal 2:
-cd Backend
-python -m venv env
-env/Scripts/activate
-pip install -r requirements.txt
-uvicorn main:app
+
+    cd Backend
+    python -m venv env
+    env/Scripts/activate
+    pip install -r requirements.txt
+    uvicorn main:app
